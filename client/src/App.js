@@ -12,7 +12,6 @@ import styles from "./App.module.css";
 
 function App() {
   const [customers, setCustomers] = useState([]);
-  const [progress, setProgress] = useState(0);
 
   // useEffect(
   //   async() => {
@@ -26,13 +25,14 @@ function App() {
   useEffect(() => {
     stateRefresh();
   }, []);
-
+  console.log(axios.get("./api/customers"))
   const stateRefresh = async () => {
    
     const result = await axios.get("./api/customers");
     setCustomers(result.data);
   }
 
+  console.log(stateRefresh)
   // axios.get("http://localhost:5000/api/customers")
   // .then((res) => {
   //   setCustomers(res.data)

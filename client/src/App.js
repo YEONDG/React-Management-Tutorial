@@ -13,52 +13,15 @@ import styles from "./App.module.css";
 function App() {
   const [customers, setCustomers] = useState([]);
 
-  // useEffect(
-  //   async() => {
-  //    setInterval(() => {
-  //      setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 1));
-  //    }, 20);
-  //   const result = await axios.get("./api/customers");
-  //   setCustomers(result.data);
-  // }, []);
-
   useEffect(() => {
     stateRefresh();
   }, []);
-  console.log(axios.get("./api/customers"))
+  
   const stateRefresh = async () => {
-   
-    const result = await axios.get("./api/customers");
+    const result = await axios.get("http://localhost:5000/api/customers");
     setCustomers(result.data);
   }
 
-  console.log(stateRefresh)
-  // axios.get("http://localhost:5000/api/customers")
-  // .then((res) => {
-  //   setCustomers(res.data)
-  // }).catch((error)  => {
-  //   console.log("실패")
-  // })
-
-  // useEffect(() => {  
-  //   axios.get("http://localhost:5000/api/customers")
-  //   .then((response) => {
-  //     setCustomers(response.data)
-  //   }).catch((error)  => {
-  //     console.log("실패")
-  //   })
-  // }, []);
-  // console.log(setCustomers)
-
-  // const stateRefresh = async () => {
-  //   setInterval(() => {
-  //     setProgress((prevProgress) =>
-  //       prevProgress >= 100 ? 0 : prevProgress + 1
-  //     );
-  //   }, 20);
-  //   const result = await axios.get("http://localhost:5000/api/customers");
-  //   setCustomers(result.data);
-  // };
 
   return (
     <Paper className={styles.root}>

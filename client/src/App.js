@@ -14,13 +14,41 @@ function App() {
   const [customers, setCustomers] = useState([]);
   const [progress, setProgress] = useState(0);
 
-  useEffect(() => {  
-    axios.get("http://localhost:5000/api/customers")
-    .then((response) => {
-      setCustomers(response.data)
-    })
+  // useEffect(
+  //   async() => {
+  //    setInterval(() => {
+  //      setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 1));
+  //    }, 20);
+  //   const result = await axios.get("./api/customers");
+  //   setCustomers(result.data);
+  // }, []);
+
+  useEffect(() => {
+    stateRefresh();
   }, []);
-  console.log(setCustomers)
+
+  const stateRefresh = async () => {
+   
+    const result = await axios.get("./api/customers");
+    setCustomers(result.data);
+  }
+
+  // axios.get("http://localhost:5000/api/customers")
+  // .then((res) => {
+  //   setCustomers(res.data)
+  // }).catch((error)  => {
+  //   console.log("실패")
+  // })
+
+  // useEffect(() => {  
+  //   axios.get("http://localhost:5000/api/customers")
+  //   .then((response) => {
+  //     setCustomers(response.data)
+  //   }).catch((error)  => {
+  //     console.log("실패")
+  //   })
+  // }, []);
+  // console.log(setCustomers)
 
   // const stateRefresh = async () => {
   //   setInterval(() => {

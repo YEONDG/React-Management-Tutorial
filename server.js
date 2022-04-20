@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const router = express.Router();
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -37,3 +38,5 @@ app.get('/api/customers', (req, res) => {
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
+
+module.exports = router;

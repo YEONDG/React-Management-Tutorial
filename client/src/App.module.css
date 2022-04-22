@@ -8,3 +8,10 @@
 .table {
     min-width: 1080px;
 }
+
+.cell {
+    height : 20rem
+}
+.circular { 
+    background-color: red;
+}

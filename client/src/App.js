@@ -9,6 +9,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import styles from "./App.module.css";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function App() {
   const [customers, setCustomers] = useState([]);
@@ -16,10 +18,10 @@ function App() {
   useEffect(() => {
     stateRefresh();
   }, []);
-  console.log(axios.get("/api/customers"))
+  console.log(axios.get("http://localhost:5000/api/customers"))
+
   const stateRefresh = async () => {
-    const result = await axios.get("/api/customers");
-    console.log(axios.get("/api/customers"))
+    const result = await axios.get("http://localhost:5000/api/customers");
     setCustomers(result.data);
   }
 
@@ -46,10 +48,11 @@ function App() {
                 birthday={c.birthday}
                 gender={c.gender}
                 job={c.job}
-                // stateRefresh={stateRefresh}
               />
             );
-          }) : "00"}
+          }) : <TableCell colspan="6" className={styles.cell}>
+            <CircularProgress className={styles.circular} />
+            </TableCell>}
         </TableBody>
       </Table>
     </Paper>

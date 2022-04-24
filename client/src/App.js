@@ -18,10 +18,10 @@ function App() {
   useEffect(() => {
     stateRefresh();
   }, []);
-  console.log(axios.get("http://localhost:5000/api/customers"))
+  console.log(axios.get("/api/customers"))
 
   const stateRefresh = async () => {
-    const result = await axios.get("http://localhost:5000/api/customers");
+    const result = await axios.get("/api/customers");
     setCustomers(result.data);
   }
 
